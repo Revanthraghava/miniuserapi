@@ -49,6 +49,26 @@ app.get('/users/:id',(req,res)=>{
         })
     }
     })
+app.put('/users/:id',(req,res)=>{
+    const id = Number(req.params.id)
+    const user=users.find(user=>user.id === id)
+    if (!user){
+
+        return res.status(404).json({
+            message:"user not found"
+        })
+    }
+
+    else{
+        user.name = req.body.name
+        user.age = Number(req.body.age)
+        res.status(200).json({
+            message:"user updated successfully",
+            data:user
+        })
+    }
+})
+
 
     app.listen(3000,()=>{ 
         console.log("server is running") 
