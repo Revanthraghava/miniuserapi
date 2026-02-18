@@ -17,7 +17,7 @@ app.post('/users',(req,res)=>{
         
         name:incomingData.name,
 
-        age:incomingData.age
+        age:Number(incomingData.age)
         
 
 
