@@ -8,6 +8,10 @@ Simple REST API built using Node.js and Express.
 - In-memory storage
 - Auto-increment ID
 - Get user with /:id
+
 ## Tech Stack
 - Node.js
 - Express
+
+## CRU 
+-Completed upto update
