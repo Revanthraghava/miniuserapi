@@ -18,7 +18,7 @@ app.post('/users',(req,res)=>{
         name:incomingData.name,
 
         age:incomingData.age
-
+        
 
 
     }
@@ -29,20 +29,26 @@ app.post('/users',(req,res)=>{
 res.status(201).json({ 
     message: 'User created successfully', data:newUser }) 
 
-}) 
-
-
-
-app.get('/users',(req,res)=>{
-
-    res.status(200).json({
-
-        message:"users fetched successfully",
-        data:users
-    })
 })
 
 
+app.get('/users/:id',(req,res)=>{
+    const id = Number(req.params.id)
+    const user=users.find(user=> user.id === id) 
+
+    if (!user){
+    return res.status(404).json({
+            message:"user not found"
+
+    })
+    }
+    else{
+        res.status(200).json({
+        message:"user fetched successfully",
+        data:user
+        })
+    }
+    })
 
     app.listen(3000,()=>{ 
         console.log("server is running") 
